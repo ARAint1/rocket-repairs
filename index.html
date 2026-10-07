@@ -1,0 +1,1004 @@
+<title>Rocket Repairs</title>
+<meta name="description" content="Stress-free property repairs and maintenance across London">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif&display=swap">
+
+<style>
+  /* Layout: vertical stack, max-width prose container, generous whitespace */
+  :root {
+    --bg: #ffffff;
+    --bg-alt: #f5f5f5;
+    --fg: #0a0a0a;
+    --fg-mid: #3a3a3a;
+    --fg-muted: #6b6b6b;
+    --fg-faint: #999999;
+    --border: #e0e0e0;
+    --border-strong: #c0c0c0;
+    --surface: #fafafa;
+    --accent: #0a0a0a;
+    --accent-inv: #ffffff;
+    --font-display: 'Instrument Serif', Georgia, serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0a0a0a;
+      --bg-alt: #111111;
+      --fg: #f0f0f0;
+      --fg-mid: #cccccc;
+      --fg-muted: #888888;
+      --fg-faint: #666666;
+      --border: #222222;
+      --border-strong: #333333;
+      --surface: #141414;
+      --accent: #f0f0f0;
+      --accent-inv: #0a0a0a;
+      color-scheme: dark;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #0a0a0a;
+    --bg-alt: #111111;
+    --fg: #f0f0f0;
+    --fg-mid: #cccccc;
+    --fg-muted: #888888;
+    --fg-faint: #666666;
+    --border: #222222;
+    --border-strong: #333333;
+    --surface: #141414;
+    --accent: #f0f0f0;
+    --accent-inv: #0a0a0a;
+    color-scheme: dark;
+  }
+
+  * { margin: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding-inline: 20px;
+  }
+
+  h1, h2, h3 { line-height: 1.15; text-wrap: balance; }
+  h1, h2 { font-family: var(--font-display); font-weight: 400; }
+  h3 { font-family: var(--font-body); font-weight: 600; }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 100;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 16px;
+    gap: 24px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--fg);
+  }
+
+  .logo-text {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: -0.01em;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+    padding: 0;
+  }
+
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--fg-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--fg); }
+
+  .nav-cta {
+    background: var(--accent) !important;
+    color: var(--accent-inv) !important;
+    padding: 8px 20px;
+    border-radius: 4px;
+    transition: opacity 0.2s;
+  }
+
+  .nav-cta:hover { opacity: 0.85; }
+
+  .mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--fg);
+    padding: 4px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 100px 0 80px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fg-faint);
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.8rem, 5.5vw, 4rem);
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--fg-muted);
+    max-width: 440px;
+    margin-bottom: 36px;
+    line-height: 1.7;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 28px;
+    border-radius: 4px;
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: var(--accent-inv);
+  }
+
+  .btn-primary:hover { opacity: 0.85; }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--fg);
+    border: 1px solid var(--border-strong);
+  }
+
+  .btn-outline:hover { border-color: var(--fg); }
+
+  /* Prism logo mark */
+  .hero-mark {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* ── TRUST ── */
+  .trust {
+    padding: 36px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .trust-row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .trust-item {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--fg-muted);
+    letter-spacing: 0.02em;
+  }
+
+  .trust-sep {
+    width: 1px;
+    background: var(--border);
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    padding: 88px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section.alt { background: var(--bg-alt); }
+
+  .section-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--fg-faint);
+    margin-bottom: 12px;
+  }
+
+  .section-heading {
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+  }
+
+  .section-sub {
+    color: var(--fg-muted);
+    max-width: 500px;
+    margin-bottom: 52px;
+  }
+
+  /* ── SERVICES ── */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .service-cell {
+    background: var(--bg);
+    padding: 32px;
+  }
+
+  .alt .service-cell { background: var(--bg-alt); }
+
+  .service-cell h3 {
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+  }
+
+  .service-cell p {
+    font-size: 0.88rem;
+    color: var(--fg-muted);
+    line-height: 1.6;
+  }
+
+  .service-num {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--fg-faint);
+    opacity: 0.4;
+    margin-bottom: 16px;
+    line-height: 1;
+  }
+
+  /* ── HOW IT WORKS ── */
+  .steps-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+  }
+
+  .step-num {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    line-height: 1;
+    color: var(--border);
+    margin-bottom: 20px;
+  }
+
+  .step h3 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+
+  .step p {
+    font-size: 0.88rem;
+    color: var(--fg-muted);
+    line-height: 1.6;
+  }
+
+  /* ── COVERAGE ── */
+  .coverage-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .area-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid var(--border);
+  }
+
+  .area-item {
+    padding: 14px 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .area-item:last-child { border-bottom: none; }
+
+  .area-status {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--fg-faint);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .coverage-text h3 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    margin-top: 28px;
+  }
+
+  .coverage-text h3:first-child { margin-top: 0; }
+
+  .coverage-text p {
+    font-size: 0.88rem;
+    color: var(--fg-muted);
+    line-height: 1.65;
+  }
+
+  .compliance-row {
+    margin-top: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .compliance-tag {
+    font-size: 0.78rem;
+    font-weight: 500;
+    padding: 6px 14px;
+    border: 1px solid var(--border-strong);
+    letter-spacing: 0.02em;
+  }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .testimonial {
+    background: var(--bg);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .testimonial blockquote {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 24px;
+    color: var(--fg);
+  }
+
+  .testimonial-footer {
+    border-top: 1px solid var(--border);
+    padding-top: 16px;
+  }
+
+  .testimonial-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .testimonial-loc {
+    font-size: 0.8rem;
+    color: var(--fg-faint);
+  }
+
+  /* ── PRICING ── */
+  .pricing-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .price-col {
+    background: var(--bg);
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .alt .price-col { background: var(--bg-alt); }
+
+  .price-col.featured { background: var(--accent); color: var(--accent-inv); }
+  .price-col.featured .price-note,
+  .price-col.featured p,
+  .price-col.featured li { color: var(--accent-inv); opacity: 0.7; }
+  .price-col.featured h3,
+  .price-col.featured .price { color: var(--accent-inv); }
+  .price-col.featured .btn {
+    background: var(--accent-inv);
+    color: var(--accent);
+  }
+  .price-col.featured li::before { opacity: 1; }
+
+  .price-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--fg-faint);
+    margin-bottom: 16px;
+  }
+
+  .price-col.featured .price-label { color: var(--accent-inv); opacity: 0.5; }
+
+  .price-col h3 {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-bottom: 4px;
+  }
+
+  .price {
+    font-family: var(--font-body);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .price-note {
+    font-size: 0.8rem;
+    color: var(--fg-faint);
+    margin-bottom: 24px;
+  }
+
+  .price-col ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 28px;
+    flex-grow: 1;
+  }
+
+  .price-col li {
+    font-size: 0.85rem;
+    color: var(--fg-muted);
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .price-col li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 5px;
+    height: 1px;
+    background: var(--fg-faint);
+  }
+
+  .btn-full { width: 100%; justify-content: center; text-align: center; }
+
+  /* ── CTA ── */
+  .cta {
+    padding: 100px 0;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .cta h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 16px;
+  }
+
+  .cta p {
+    color: var(--fg-muted);
+    margin-bottom: 32px;
+    font-size: 1.05rem;
+  }
+
+  .cta-contact {
+    margin-top: 24px;
+    font-size: 0.88rem;
+    color: var(--fg-faint);
+  }
+
+  .cta-contact span {
+    color: var(--fg-mid);
+    font-weight: 600;
+    user-select: all;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 48px 0 32px;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+  }
+
+  .footer-brand p {
+    font-size: 0.85rem;
+    color: var(--fg-muted);
+    margin-top: 12px;
+    max-width: 260px;
+    line-height: 1.6;
+  }
+
+  .footer-col h4 {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 14px;
+    color: var(--fg-mid);
+  }
+
+  .footer-col ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .footer-col a {
+    font-size: 0.85rem;
+    color: var(--fg-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-col a:hover { color: var(--fg); }
+
+  .footer-bottom {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 0.78rem;
+    color: var(--fg-faint);
+  }
+
+  .footer-certs {
+    display: flex;
+    gap: 20px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--fg-faint);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 820px) {
+    .nav-links { display: none; }
+    .nav-links.open {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 20px;
+      gap: 16px;
+    }
+    .mobile-toggle { display: block; }
+
+    .hero { padding: 64px 0 56px; }
+    .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+    .hero-mark { order: -1; }
+    .hero-mark svg { width: 200px; height: 200px; }
+
+    .services-grid,
+    .testimonials-grid,
+    .pricing-row { grid-template-columns: 1fr; }
+
+    .steps-row { grid-template-columns: 1fr; gap: 36px; }
+    .coverage-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-actions { flex-direction: column; }
+    .btn { width: 100%; justify-content: center; }
+    .trust-row { flex-direction: column; gap: 8px; text-align: center; }
+    .trust-sep { display: none; }
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition-duration: 0s !important; }
+  }
+</style>
+
+<!-- NAV -->
+<nav>
+  <div class="container nav-inner">
+    <a href="#" class="logo">
+      <svg width="24" height="24" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="20,3 36,34 4,34" fill="none" stroke="var(--fg)" stroke-width="2.5"/>
+        <line x1="20" y1="3" x2="20" y2="34" stroke="var(--fg)" stroke-width="1.2" opacity="0.3"/>
+        <line x1="12" y1="18.5" x2="28" y2="18.5" stroke="var(--fg)" stroke-width="1.2" opacity="0.3"/>
+      </svg>
+      <span class="logo-text">Rocket Repairs</span>
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#coverage">Coverage</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#contact" class="nav-cta">Book a Repair</a></li>
+    </ul>
+    <button class="mobile-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Toggle menu">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 5h16M2 10h16M2 15h16"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-inner">
+    <div>
+      <div class="hero-eyebrow">London Property Repairs</div>
+      <h1>Property repairs,<br>done right.</h1>
+      <p class="hero-desc">Stress-free home and commercial repairs across London. Fully insured tradespeople, transparent fixed pricing, and no hidden fees. Ever.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">Book a Repair</a>
+        <a href="#services" class="btn btn-outline">View Services</a>
+      </div>
+    </div>
+    <div class="hero-mark">
+      <svg width="300" height="300" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Light beam entering -->
+        <line x1="0" y1="130" x2="115" y2="162" stroke="var(--fg)" stroke-width="1" opacity="0.25"/>
+        <line x1="0" y1="140" x2="118" y2="168" stroke="var(--fg)" stroke-width="1" opacity="0.15"/>
+        <!-- Prism -->
+        <polygon points="150,40 70,250 230,250" fill="none" stroke="var(--fg)" stroke-width="2"/>
+        <!-- Inner construction lines -->
+        <line x1="150" y1="40" x2="150" y2="250" stroke="var(--fg)" stroke-width="0.5" opacity="0.12"/>
+        <line x1="110" y1="145" x2="190" y2="145" stroke="var(--fg)" stroke-width="0.5" opacity="0.12"/>
+        <!-- Dispersed light rays -->
+        <line x1="195" y1="150" x2="300" y2="90" stroke="var(--fg)" stroke-width="1" opacity="0.35"/>
+        <line x1="198" y1="160" x2="300" y2="120" stroke="var(--fg)" stroke-width="1" opacity="0.28"/>
+        <line x1="200" y1="170" x2="300" y2="155" stroke="var(--fg)" stroke-width="1" opacity="0.22"/>
+        <line x1="201" y1="180" x2="300" y2="195" stroke="var(--fg)" stroke-width="1" opacity="0.18"/>
+        <line x1="200" y1="190" x2="300" y2="230" stroke="var(--fg)" stroke-width="1" opacity="0.14"/>
+        <line x1="198" y1="200" x2="298" y2="260" stroke="var(--fg)" stroke-width="1" opacity="0.1"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section class="trust">
+  <div class="container">
+    <div class="trust-row">
+      <span class="trust-item">Fully Insured</span>
+      <span class="trust-sep"></span>
+      <span class="trust-item">Same-Day Available</span>
+      <span class="trust-sep"></span>
+      <span class="trust-item">Fixed Pricing</span>
+      <span class="trust-sep"></span>
+      <span class="trust-item">4.9 / 5 Rating</span>
+      <span class="trust-sep"></span>
+      <span class="trust-item">Gas Safe Registered</span>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="container">
+    <div class="section-eyebrow">Services</div>
+    <h2 class="section-heading">Every repair your<br>property needs</h2>
+    <p class="section-sub">From a dripping tap to a full kitchen refit. Fixed, upfront pricing on every job.</p>
+
+    <div class="services-grid">
+      <div class="service-cell">
+        <div class="service-num">01</div>
+        <h3>Plumbing</h3>
+        <p>Leaky taps, burst pipes, boiler repairs, radiator installs, and bathroom plumbing. Gas Safe certified for all gas work.</p>
+      </div>
+      <div class="service-cell">
+        <div class="service-num">02</div>
+        <h3>Electrical</h3>
+        <p>Socket replacements, rewiring, fuseboard upgrades, lighting installs, and EICR certificates. NICEIC accredited.</p>
+      </div>
+      <div class="service-cell">
+        <div class="service-num">03</div>
+        <h3>General Repairs</h3>
+        <p>Drywall patching, door hanging, shelving, locks, tiling, grouting, and all those odd jobs you've been putting off.</p>
+      </div>
+      <div class="service-cell">
+        <div class="service-num">04</div>
+        <h3>Carpentry</h3>
+        <p>Bespoke shelving, skirting board replacement, built-in wardrobes, kitchen fitting, and structural timber repair.</p>
+      </div>
+      <div class="service-cell">
+        <div class="service-num">05</div>
+        <h3>Painting &amp; Decorating</h3>
+        <p>Interior and exterior painting, wallpapering, feature walls, and period property restoration with careful prep work.</p>
+      </div>
+      <div class="service-cell">
+        <div class="service-num">06</div>
+        <h3>Commercial Maintenance</h3>
+        <p>Planned and reactive maintenance contracts for landlords, letting agents, and commercial property managers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section alt" id="process">
+  <div class="container">
+    <div class="section-eyebrow">Process</div>
+    <h2 class="section-heading">Three steps to a<br>fixed property</h2>
+    <p class="section-sub">No chasing quotes, no surprise bills, no waiting around all day.</p>
+
+    <div class="steps-row">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Tell us the problem</h3>
+        <p>Book online or call us. Describe the issue, attach a photo if you can, and pick a time slot that works for you.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Get a fixed quote</h3>
+        <p>We confirm the price before anyone turns up. No hidden call-out fees, no London surcharges, no surprises.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>We fix it. Done.</h3>
+        <p>Our tradesperson arrives in the agreed time slot, completes the repair, cleans up, and you pay only the quoted price.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COVERAGE -->
+<section class="section" id="coverage">
+  <div class="container">
+    <div class="section-eyebrow">Service Area</div>
+    <h2 class="section-heading">Right across London</h2>
+    <p class="section-sub">Our vans are already on your streets.</p>
+
+    <div class="coverage-grid">
+      <div class="area-list">
+        <div class="area-item">Central London <span class="area-status">Active</span></div>
+        <div class="area-item">North London <span class="area-status">Active</span></div>
+        <div class="area-item">South London <span class="area-status">Active</span></div>
+        <div class="area-item">East London <span class="area-status">Active</span></div>
+        <div class="area-item">West London <span class="area-status">Active</span></div>
+        <div class="area-item">Greater London <span class="area-status">Active</span></div>
+      </div>
+
+      <div class="coverage-text">
+        <h3>We handle the logistics</h3>
+        <p>Parking permits, congestion zones, resident bays — we sort it all before we arrive. You never pay parking or zone charges on top of your quote.</p>
+
+        <h3>Accredited and compliant</h3>
+        <p>Gas Safe registered, NICEIC accredited, and fully insured with public liability cover. We carry all certifications on every visit.</p>
+
+        <div class="compliance-row">
+          <span class="compliance-tag">Gas Safe</span>
+          <span class="compliance-tag">NICEIC</span>
+          <span class="compliance-tag">Public Liability</span>
+          <span class="compliance-tag">ULEZ Compliant</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section alt">
+  <div class="container">
+    <div class="section-eyebrow">Testimonials</div>
+    <h2 class="section-heading">Trusted by homeowners<br>and landlords</h2>
+    <p class="section-sub">&nbsp;</p>
+
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <blockquote>"Called on Monday morning about a burst pipe. They were here by lunchtime, fixed it, and cleaned up the water damage. Price was exactly what they quoted."</blockquote>
+        <div class="testimonial-footer">
+          <div class="testimonial-name">Sarah M.</div>
+          <div class="testimonial-loc">Islington, N1</div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <blockquote>"We manage 40+ rental units and Rocket Repairs handles all our maintenance. Tenants are happier, response times are better, and our costs are predictable."</blockquote>
+        <div class="testimonial-footer">
+          <div class="testimonial-name">James K.</div>
+          <div class="testimonial-loc">Property Manager, Hackney</div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <blockquote>"I've been burned by tradespeople who don't show up. Rocket Repairs arrived on time, did perfect work on our Victorian sash windows, and charged the quote. I won't use anyone else."</blockquote>
+        <div class="testimonial-footer">
+          <div class="testimonial-name">David &amp; Priya T.</div>
+          <div class="testimonial-loc">Clapham, SW4</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section" id="pricing">
+  <div class="container">
+    <div class="section-eyebrow">Pricing</div>
+    <h2 class="section-heading">No hidden fees.<br>No London premium.</h2>
+    <p class="section-sub">The price we quote is the price you pay — parking, ULEZ, and congestion charges included.</p>
+
+    <div class="pricing-row">
+      <div class="price-col">
+        <div class="price-label">Standard</div>
+        <h3>Single Repair</h3>
+        <div class="price">From £89</div>
+        <p class="price-note">Fixed price, no call-out fee</p>
+        <ul>
+          <li>Tap repairs, toilet fixes</li>
+          <li>Socket and switch replacements</li>
+          <li>Door hanging and locks</li>
+          <li>Drywall and plaster patching</li>
+          <li>Tiling and grouting touch-ups</li>
+        </ul>
+        <a href="#contact" class="btn btn-outline btn-full">Get a Quote</a>
+      </div>
+      <div class="price-col featured">
+        <div class="price-label">Popular</div>
+        <h3>Half-Day Booking</h3>
+        <div class="price">From £249</div>
+        <p class="price-note">Up to 4 hours, materials extra</p>
+        <ul>
+          <li>Multiple repairs in one visit</li>
+          <li>Kitchen and bathroom fixes</li>
+          <li>Shelving and carpentry</li>
+          <li>Painting a room</li>
+          <li>Priority scheduling</li>
+        </ul>
+        <a href="#contact" class="btn btn-full">Book Half-Day</a>
+      </div>
+      <div class="price-col">
+        <div class="price-label">Contract</div>
+        <h3>Maintenance</h3>
+        <div class="price">Custom</div>
+        <p class="price-note">Bespoke to your portfolio</p>
+        <ul>
+          <li>Dedicated account manager</li>
+          <li>Guaranteed response times</li>
+          <li>Planned preventative maintenance</li>
+          <li>Compliance and safety certificates</li>
+          <li>Monthly reporting and invoicing</li>
+        </ul>
+        <a href="#contact" class="btn btn-outline btn-full">Discuss Your Needs</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <div class="container">
+    <h2>Ready to get it fixed?</h2>
+    <p>Book online for a free, no-obligation quote. Most repairs quoted within the hour.</p>
+    <a href="#contact" class="btn btn-primary">Book a Repair Online</a>
+    <div class="cta-contact">
+      Email us at <span>hello@rocketrepairs.net</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <svg width="20" height="20" viewBox="0 0 40 40" fill="none">
+            <polygon points="20,3 36,34 4,34" fill="none" stroke="var(--fg)" stroke-width="2.5"/>
+          </svg>
+          <span class="logo-text">Rocket Repairs</span>
+        </a>
+        <p>Stress-free property repairs and maintenance across London. Fully insured, transparently priced, always on time.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Plumbing</a></li>
+          <li><a href="#services">Electrical</a></li>
+          <li><a href="#services">General Repairs</a></li>
+          <li><a href="#services">Carpentry</a></li>
+          <li><a href="#services">Painting</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#coverage">Coverage Area</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#contact">Book a Repair</a></li>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Rocket Repairs London. All rights reserved.</span>
+      <div class="footer-certs">
+        <span>Gas Safe</span>
+        <span>NICEIC</span>
+        <span>Insured</span>
+      </div>
+    </div>
+  </div>
+</footer>
