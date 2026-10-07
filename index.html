@@ -562,6 +562,105 @@
     user-select: all;
   }
 
+  /* ── CAREERS ── */
+  .careers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 40px;
+  }
+
+  .career-card {
+    border: 1px solid var(--border);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .career-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+  }
+
+  .career-card p {
+    font-size: 0.9rem;
+    color: var(--fg-muted);
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  .career-card .btn {
+    align-self: flex-start;
+    margin-top: 8px;
+  }
+
+  /* ── FAQ ── */
+  .faq-list {
+    max-width: 720px;
+    margin: 40px auto 0;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .faq-item summary {
+    padding: 20px 0;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 1rem;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .faq-item summary::after {
+    content: '+';
+    font-size: 1.2rem;
+    color: var(--fg-muted);
+    transition: transform 0.2s;
+  }
+
+  .faq-item[open] summary::after {
+    content: '−';
+  }
+
+  .faq-item summary::-webkit-details-marker { display: none; }
+
+  .faq-item p {
+    padding: 0 0 20px;
+    font-size: 0.9rem;
+    color: var(--fg-muted);
+    line-height: 1.7;
+  }
+
+  /* ── LEGAL ── */
+  .legal-text {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .legal-text h3 {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    margin-top: 32px;
+    margin-bottom: 8px;
+  }
+
+  .legal-text p {
+    font-size: 0.9rem;
+    color: var(--fg-muted);
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+
+  .legal-text a {
+    color: var(--fg-mid);
+    text-decoration: underline;
+  }
+
   /* ── FOOTER ── */
   footer {
     padding: 48px 0 32px;
@@ -651,7 +750,8 @@
 
     .services-grid,
     .testimonials-grid,
-    .pricing-row { grid-template-columns: 1fr; }
+    .pricing-row,
+    .careers-grid { grid-template-columns: 1fr; }
 
     .steps-row { grid-template-columns: 1fr; gap: 36px; }
     .coverage-grid { grid-template-columns: 1fr; }
@@ -697,7 +797,7 @@
 </nav>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="about">
   <div class="container hero-inner">
     <div>
       <div class="hero-eyebrow">London Property Repairs</div>
@@ -950,6 +1050,110 @@
   </div>
 </section>
 
+<!-- CAREERS -->
+<section class="section alt" id="careers">
+  <div class="container">
+    <h2>Join the Team</h2>
+    <p class="section-desc">We're always looking for skilled, reliable tradespeople to join Rocket Repairs. Competitive pay, flexible hours, and a supportive team across London.</p>
+    <div class="careers-grid">
+      <div class="career-card">
+        <h3>Plumber</h3>
+        <p>Experienced plumber for residential and commercial callouts. Must hold relevant City & Guilds qualifications.</p>
+        <a href="mailto:careers@rocketrepair.net?subject=Application%20–%20Plumber" class="btn btn-outline">Apply Now</a>
+      </div>
+      <div class="career-card">
+        <h3>Electrician</h3>
+        <p>Qualified electrician (18th Edition) for domestic installations, fault-finding, and compliance work.</p>
+        <a href="mailto:careers@rocketrepair.net?subject=Application%20–%20Electrician" class="btn btn-outline">Apply Now</a>
+      </div>
+      <div class="career-card">
+        <h3>General Handyperson</h3>
+        <p>Multi-skilled tradesperson comfortable with carpentry, painting, tiling, and general property maintenance.</p>
+        <a href="mailto:careers@rocketrepair.net?subject=Application%20–%20General%20Handyperson" class="btn btn-outline">Apply Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>How quickly can you attend a repair?</summary>
+        <p>For standard repairs, we typically attend within 48 hours of booking. Emergency callouts are available same-day across Greater London, subject to availability.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Are your tradespeople insured?</summary>
+        <p>Yes. Every Rocket Repairs tradesperson carries full public liability insurance. We also hold Gas Safe and NICEIC certifications where applicable.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Do you charge for quotes?</summary>
+        <p>No. All quotes are free and come with no obligation. For standard jobs we quote a fixed price before work begins — no surprises on your invoice.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What areas do you cover?</summary>
+        <p>We cover all London boroughs and surrounding areas within the M25. For locations further afield, get in touch and we'll let you know.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What payment methods do you accept?</summary>
+        <p>We accept bank transfer, debit and credit cards, and invoicing for commercial clients. Payment is due on completion unless otherwise agreed.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Do you offer guarantees on your work?</summary>
+        <p>All repairs come with a 12-month workmanship guarantee. If something we fixed develops the same fault, we'll return and put it right at no extra cost.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- TERMS -->
+<section class="section alt" id="terms">
+  <div class="container">
+    <h2>Terms of Service</h2>
+    <div class="legal-text">
+      <p><strong>Effective:</strong> 1 January 2026</p>
+      <p>By booking a repair through Rocket Repairs, you agree to the following terms. These terms apply to all services provided by Rocket Repairs London Ltd.</p>
+      <h3>Bookings and Quotes</h3>
+      <p>All quotes are valid for 30 days from issue. Fixed-price quotes cover the scope of work described — additional work discovered on site will be quoted separately before proceeding. We reserve the right to decline a booking at our discretion.</p>
+      <h3>Pricing and Payment</h3>
+      <p>Prices are quoted exclusive of VAT where applicable. Payment is due on completion of work unless a payment schedule has been agreed in writing. Late payments may incur a charge of 2% per month.</p>
+      <h3>Cancellations</h3>
+      <p>Bookings may be cancelled free of charge up to 24 hours before the scheduled appointment. Cancellations with less than 24 hours' notice may be subject to a £49 callout fee.</p>
+      <h3>Guarantee</h3>
+      <p>All workmanship is guaranteed for 12 months from completion. This guarantee covers defects in our work only and does not extend to pre-existing issues, normal wear, or materials supplied by the client.</p>
+      <h3>Liability</h3>
+      <p>Rocket Repairs holds public liability insurance up to £5,000,000. Our liability is limited to the cost of the work performed. We are not liable for consequential loss or damage beyond the scope of the repair.</p>
+      <h3>Contact</h3>
+      <p>For queries about these terms, email <a href="mailto:hello@rocketrepair.net">hello@rocketrepair.net</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRIVACY -->
+<section class="section" id="privacy">
+  <div class="container">
+    <h2>Privacy Policy</h2>
+    <div class="legal-text">
+      <p><strong>Effective:</strong> 1 January 2026</p>
+      <p>Rocket Repairs London Ltd respects your privacy. This policy explains what data we collect, why, and how we protect it.</p>
+      <h3>What We Collect</h3>
+      <p>When you book a repair or contact us, we collect your name, address, email, and details of the work required. We do not collect data beyond what is necessary to deliver our services.</p>
+      <h3>How We Use It</h3>
+      <p>Your data is used to schedule and deliver repairs, send quotes and invoices, and communicate about your booking. We will not use your information for marketing without your explicit consent.</p>
+      <h3>Data Sharing</h3>
+      <p>We do not sell or share your personal data with third parties, except where necessary to deliver our services (e.g., a subcontractor attending your property) or where required by law.</p>
+      <h3>Data Retention</h3>
+      <p>We retain booking and invoice records for six years in line with UK tax obligations. Contact details are removed on request, subject to legal retention requirements.</p>
+      <h3>Your Rights</h3>
+      <p>Under UK GDPR, you have the right to access, correct, or delete your personal data. To exercise these rights, email <a href="mailto:hello@rocketrepair.net">hello@rocketrepair.net</a>.</p>
+      <h3>Cookies</h3>
+      <p>This website does not use tracking cookies or analytics. No personal data is collected through your use of this site unless you contact us directly.</p>
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <div class="container">
@@ -976,19 +1180,19 @@
       <div class="footer-col">
         <h4>Company</h4>
         <ul>
-          <li><a href="#">About Us</a></li>
+          <li><a href="#about">About Us</a></li>
           <li><a href="#coverage">Coverage Area</a></li>
-          <li><a href="#">Careers</a></li>
-          <li><a href="#">Blog</a></li>
+          <li><a href="#careers">Careers</a></li>
+          <li><a href="#pricing">Pricing</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Support</h4>
         <ul>
           <li><a href="#contact">Book a Repair</a></li>
-          <li><a href="#">FAQs</a></li>
-          <li><a href="#">Terms of Service</a></li>
-          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#faq">FAQs</a></li>
+          <li><a href="#terms">Terms of Service</a></li>
+          <li><a href="#privacy">Privacy Policy</a></li>
         </ul>
       </div>
     </div>
